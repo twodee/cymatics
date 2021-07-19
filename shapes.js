@@ -161,6 +161,7 @@ function generateGrid(nlat, nlong, width, height) {
 }
 
 
+
 function index(ilong,nlat,ilat){
     const indexresult = ilong * nlat + ilat;
     return indexresult;

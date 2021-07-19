@@ -87,29 +87,31 @@ camera.position.z = 15;
 
 
 
-// const shape = generateTerrain(4, 5, 4, 5, 5);
+const shape = generateTerrain(20, 20, 20, 20, 25);
 
-// const geometry = new THREE.BufferGeometry();
-// geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(shape.positions), 3));
-
-
-// geometry.setIndex(shape.triangles);
-
-// const material = new THREE.MeshBasicMaterial({
-//     color: 'orange',
-// });
-
-// const mesh = new THREE.Mesh(geometry, material);
-// scene.add(mesh);
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(shape.positions), 3));
 
 
+geometry.setIndex(shape.triangles);
 
-// const pointmaterial = new THREE.PointsMaterial({
-//   color: 'red',
-//   size: 0.5,
-// });
-// const points = new THREE.Points(geometry, pointmaterial);
-// scene.add(points);
+const material = new THREE.MeshBasicMaterial({
+    color: 'orange',
+});
+
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+
+
+
+
+const pointmaterial = new THREE.PointsMaterial({
+  color: 'red',
+  size: 0.5,
+});
+const points = new THREE.Points(geometry, pointmaterial);
+scene.add(points);
 
 
 
@@ -489,7 +491,7 @@ camera.position.z = 15;
 
 
 
-const shape = generatePlus(3, 1);
+// const shape = generatePlus(3, 1);
 
 // const geometry = new THREE.BufferGeometry();
 // geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(shape.positions), 3));
@@ -505,25 +507,25 @@ const shape = generatePlus(3, 1);
 
 
 
-const eshape = extrude(shape, [0, 0, -1]);
+// const eshape = extrude(shape, [0, 0, -1]);
 
-const geometry = new THREE.BufferGeometry();
-geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(eshape.positions), 3));
-// geometry.setIndex(shape.triangles);
+// const geometry = new THREE.BufferGeometry();
+// geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(eshape.positions), 3));
+// // geometry.setIndex(shape.triangles);
 
-const material = new THREE.MeshBasicMaterial({
-    color: 'orange',
-});
+// const material = new THREE.MeshBasicMaterial({
+//     color: 'orange',
+// });
 
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
+// const mesh = new THREE.Mesh(geometry, material);
+// scene.add(mesh);
 
-const pointmaterial = new THREE.PointsMaterial({
-  color: 'red',
-  size: 0.5,
-});
-const points = new THREE.Points(geometry, pointmaterial);
-scene.add(points);
+// const pointmaterial = new THREE.PointsMaterial({
+//   color: 'red',
+//   size: 0.5,
+// });
+// const points = new THREE.Points(geometry, pointmaterial);
+// scene.add(points);
 
 
 
