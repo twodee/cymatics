@@ -919,5 +919,24 @@ function extrude(shape, axis){
     
 }
 
+function graphCymatics(n,m,L){
+
+    let x = 30
+    let y = 30
+
+    for (let xcount = 0; xcount < x; xcount += 1){
+        for (let ycount = 0; ycount < y; ycount += 1) {
+
+            let a = Math.cos(Math.PI * n * x / L)
+            let b = Math.cos(Math.PI * m * y / L)
+            let c = Math.cos(Math.PI * m * x / L)
+            let d = Math.cos(Math.PI * n * y / L)
+
+           let (a * b) - (c * d) == 0
+
+        }
+    }
+}
+
 
 
