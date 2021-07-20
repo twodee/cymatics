@@ -174,6 +174,7 @@ function index(ilong,nlat,ilat){
 
 
 
+
 function generateTerrain(nlat, nlong, width, height, depth) {
     const positions = [];
 
@@ -924,6 +925,8 @@ function graphCymatics(n,m,L){
     let x = 30
     let y = 30
 
+    const positions = [];
+
     for (let xcount = 0; xcount < x; xcount += 1){
         for (let ycount = 0; ycount < y; ycount += 1) {
 
@@ -938,6 +941,25 @@ function graphCymatics(n,m,L){
 
         }
     }
+
+    const triangles = [];
+
+    for (let ilong = 0; ilong < nlong - 1; ilong++) {
+        let nextLong = (ilong + 1) % nlong;
+        for (let ilat = 0; ilat < nlat - 1; ilat++) {
+            let nextLat = (ilat + 1) % nlat;
+            
+            triangles.push(index(ilong,nlat,ilat))
+            triangles.push(index(nextLong,nlat,ilat))
+            triangles.push(index(ilong,nlat,nextLat))
+
+            triangles.push(index(nextLong,nlat,ilat))
+            triangles.push(index(nextLong,nlat,nextLat))
+            triangles.push(index(ilong,nlat,nextLat))
+            
+        }
+
+    }   
 }
 
 
