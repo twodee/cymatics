@@ -934,6 +934,8 @@ function graphCymatics(n,m,L){
 
            let (a * b) - (c * d) == 0
 
+           positions.push(x, y, 10);
+
         }
     }
 }
