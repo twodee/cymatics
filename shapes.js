@@ -938,16 +938,7 @@ function graphCymatics(n,m,L){
 
             z = ((a * b) - (c * d)) * 1;
 
-            // if ((a * b) - (c * d) == 0){
-            //     z += 10;
-
-            // }
-
-
-
-
             positions.push(xcount, ycount, z);
-
 
         }
     }

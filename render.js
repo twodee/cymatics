@@ -48,7 +48,7 @@ const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerH
 camera.position.z = 15;
 
 // Populate the scene with shapes.
-const shape = graphCymatics(2, 5, 100);
+const shape = graphCymatics(20, 15, 100);
 const geometry = new THREE.BufferGeometry();
 geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(shape.positions), 3));
 const separatedGeometry = geometry.toNonIndexed();
