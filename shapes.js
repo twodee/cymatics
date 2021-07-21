@@ -922,14 +922,12 @@ function extrude(shape, axis){
 
 function graphCymatics(n,m,L){
 
-    let x = L;
-    let y = L;
     let z = 0;
 
     const positions = [];
 
-    for (let xcount = 0; xcount < x; xcount += 1){
-        for (let ycount = 0; ycount < y; ycount += 1) {
+    for (let xcount = -L/2; xcount < L/2; xcount += 1){
+        for (let ycount = -L/2; ycount < L/2; ycount += 1) {
 
             let a = Math.cos(Math.PI * n * xcount / L)
             let b = Math.cos(Math.PI * m * ycount / L)
@@ -954,18 +952,18 @@ function graphCymatics(n,m,L){
 
     const triangles = [];
 
-    for (let ilong = 0; ilong < x - 1; ilong++) {
-        let nextLong = (ilong + 1) % x;
-        for (let ilat = 0; ilat < y - 1; ilat++) {
-            let nextLat = (ilat + 1) % y;
+    for (let ilong = 0; ilong < L - 1; ilong++) {
+        let nextLong = (ilong + 1) % L;
+        for (let ilat = 0; ilat < L - 1; ilat++) {
+            let nextLat = (ilat + 1) % L;
             
-            triangles.push(index(ilong,y,ilat))
-            triangles.push(index(nextLong,y,ilat))
-            triangles.push(index(ilong,y,nextLat))
+            triangles.push(index(ilong,L,ilat))
+            triangles.push(index(nextLong,L,ilat))
+            triangles.push(index(ilong,L,nextLat))
 
-            triangles.push(index(nextLong,y,ilat))
-            triangles.push(index(nextLong,y,nextLat))
-            triangles.push(index(ilong,y,nextLat))
+            triangles.push(index(nextLong,L,ilat))
+            triangles.push(index(nextLong,L,nextLat))
+            triangles.push(index(ilong,L,nextLat))
             
         }
 
