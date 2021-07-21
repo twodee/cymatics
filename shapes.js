@@ -922,44 +922,56 @@ function extrude(shape, axis){
 
 function graphCymatics(n,m,L){
 
-    let x = 30
-    let y = 30
+    let x = L;
+    let y = L;
+    let z = 0;
 
     const positions = [];
 
     for (let xcount = 0; xcount < x; xcount += 1){
         for (let ycount = 0; ycount < y; ycount += 1) {
 
-            let a = Math.cos(Math.PI * n * x / L)
-            let b = Math.cos(Math.PI * m * y / L)
-            let c = Math.cos(Math.PI * m * x / L)
-            let d = Math.cos(Math.PI * n * y / L)
+            let a = Math.cos(Math.PI * n * xcount / L)
+            let b = Math.cos(Math.PI * m * ycount / L)
+            let c = Math.cos(Math.PI * m * xcount / L)
+            let d = Math.cos(Math.PI * n * ycount / L)
 
-           let (a * b) - (c * d) == 0
+            z = ((a * b) - (c * d)) * 1;
 
-           positions.push(x, y, 10);
+            // if ((a * b) - (c * d) == 0){
+            //     z += 10;
+
+            // }
+
+
+
+
+            positions.push(xcount, ycount, z);
+
 
         }
     }
 
     const triangles = [];
 
-    for (let ilong = 0; ilong < nlong - 1; ilong++) {
-        let nextLong = (ilong + 1) % nlong;
-        for (let ilat = 0; ilat < nlat - 1; ilat++) {
-            let nextLat = (ilat + 1) % nlat;
+    for (let ilong = 0; ilong < x - 1; ilong++) {
+        let nextLong = (ilong + 1) % x;
+        for (let ilat = 0; ilat < y - 1; ilat++) {
+            let nextLat = (ilat + 1) % y;
             
-            triangles.push(index(ilong,nlat,ilat))
-            triangles.push(index(nextLong,nlat,ilat))
-            triangles.push(index(ilong,nlat,nextLat))
+            triangles.push(index(ilong,y,ilat))
+            triangles.push(index(nextLong,y,ilat))
+            triangles.push(index(ilong,y,nextLat))
 
-            triangles.push(index(nextLong,nlat,ilat))
-            triangles.push(index(nextLong,nlat,nextLat))
-            triangles.push(index(ilong,nlat,nextLat))
+            triangles.push(index(nextLong,y,ilat))
+            triangles.push(index(nextLong,y,nextLat))
+            triangles.push(index(ilong,y,nextLat))
             
         }
 
     }   
+
+    return {positions, triangles};
 }
 
 
