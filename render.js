@@ -1,3 +1,5 @@
+// import * as Tone from 'tone'
+
 // Meshing and Points
 function shadedMeshing() {
   geometry.setIndex(shape.triangles);
@@ -54,7 +56,33 @@ geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(sha
 const separatedGeometry = geometry.toNonIndexed();
 // Add "pointing();" for points and "shadedMeshing();" for triangles
 shadedMeshing();
-pointing();
+
+// Creating Sound
+function sound() {
+  var audio = new AudioContext();
+  // C4, E4, G4
+  var freqs = [shape.frequency];
+  for(var i=0;i<freqs.length;i++) {
+  var o = audio.createOscillator();
+  var g = audio.createGain();
+  o.frequency.value = freqs[i];
+  o.connect(g);
+  g.gain.value = 1/freqs.length;
+  g.connect(audio.destination);
+  o.start(0);
+  setTimeout(function(s) {s.stop(0)}, 1000, o);
+  
+//   const synth = new Tone.Synth().toDestination();
+// const now = Tone.now();
+// synth.triggerAttack("C4", now);
+// synth.triggerRelease(now + 1);
+}
+}
+// const play = document.createElement("BUTTON");
+// play.innerText = 'Play';
+// document.body.appendChild(play);
+const play = document.getElementById("button");
+play.addEventListener('click', sound);
 
 // Render the scene.
 renderer.render(scene, camera);
