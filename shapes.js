@@ -926,8 +926,8 @@ function graphCymatics(n,m,L){
 
     const positions = [];
 
-    for (let xcount = -L/2; xcount < L/2; xcount += 1){
-        for (let ycount = -L/2; ycount < L/2; ycount += 1) {
+    for (let xcount = -50; xcount < 50; xcount += 1){
+        for (let ycount = -50; ycount < 50; ycount += 1) {
 
             let a = Math.cos(Math.PI * n * xcount / L)
             let b = Math.cos(Math.PI * m * ycount / L)
@@ -952,18 +952,18 @@ function graphCymatics(n,m,L){
 
     const triangles = [];
 
-    for (let ilong = 0; ilong < L - 1; ilong++) {
-        let nextLong = (ilong + 1) % L;
-        for (let ilat = 0; ilat < L - 1; ilat++) {
-            let nextLat = (ilat + 1) % L;
+    for (let ilong = 0; ilong < 99; ilong++) {
+        let nextLong = (ilong + 1) % 100;
+        for (let ilat = 0; ilat < 99; ilat++) {
+            let nextLat = (ilat + 1) % 100;
             
-            triangles.push(index(ilong,L,ilat))
-            triangles.push(index(nextLong,L,ilat))
-            triangles.push(index(ilong,L,nextLat))
+            triangles.push(index(ilong,100,ilat))
+            triangles.push(index(nextLong,100,ilat))
+            triangles.push(index(ilong,100,nextLat))
 
-            triangles.push(index(nextLong,L,ilat))
-            triangles.push(index(nextLong,L,nextLat))
-            triangles.push(index(ilong,L,nextLat))
+            triangles.push(index(nextLong,100,ilat))
+            triangles.push(index(nextLong,100,nextLat))
+            triangles.push(index(ilong,100,nextLat))
             
         }
 
