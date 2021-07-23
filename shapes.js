@@ -969,8 +969,50 @@ function graphCymatics(n,m,L){
 
     }   
 
-    return {positions, triangles};
+    const frequency = Math.sqrt(Math.pow(m / L, 2) + Math.pow(n / L, 2)) * 1000;
+
+    return {positions, triangles, frequency};
 }
 
+function graph3dCymatics(a, b, c, L) {
+    const positions = [];
 
+    for (let x = -L/2; x < L/2; x += 1){
+        for (let y = -L/2; y < L/2; y += 1) {
+            for (let z = -L/2; z < L/2; z++) {
+
+                const first = Math.cos(a * x);
+                const second = Math.cos(b * y);
+                const third = Math.cos(c * z);
+
+                if (first + second + third == 0) {
+                    positions.push(x, y, z);
+                }
+
+
+            }
+        }
+    }
+
+    const triangles = [];
+
+    for (let ilong = 0; ilong < L - 1; ilong++) {
+        let nextLong = (ilong + 1) % L;
+        for (let ilat = 0; ilat < L - 1; ilat++) {
+            let nextLat = (ilat + 1) % L;
+            
+            triangles.push(index(ilong,L,ilat))
+            triangles.push(index(nextLong,L,ilat))
+            triangles.push(index(ilong,L,nextLat))
+
+            triangles.push(index(nextLong,L,ilat))
+            triangles.push(index(nextLong,L,nextLat))
+            triangles.push(index(ilong,L,nextLat))
+            
+        }
+
+    }   
+
+    return {positions, triangles};
+}
 
